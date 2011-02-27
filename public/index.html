@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Demo Gallery</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/highcharts.js"></script>
+	<script type="text/javascript" src="js/exporting.js"></script>
+	<script type="text/javascript" src="js/highslide-full.min.js"></script>
+	<script type="text/javascript" src="js/highslide.config.js" charset="utf-8"></script>
+	<script type="text/javascript" src="js/scripts.js"></script>
+	<script type="text/javascript" src="js/burndown.js"></script>
+	<style>
+	#data { border: 10px dashed #ccc; width: 100px; height: 100px; margin: 20px auto;}
+	#help { margin: 20px auto;}
+	#data.hover { border: 10px dashed #333; }	
+	</style>
+</head>
+<body>
+
+	<div class="container container_12" style="margin-top:150px;">
+		<div id="container">
+		</div>
+		<div id="help" style="float:left;">
+Save those code into txt file:
+<pre style="font-size:10px;background-color:black;color:white;">
+var title = 'Iteration BurnDown chart'
+var iterations = ['Iter 0', 'Iter 1', 'Iter 2']
+var scope = [27, 32, 31]
+var planed = [8, 12]
+var finished = [7, 15]
+</pre>
+		</div>
+		<div style="float:left;color:#ccc;font-size:50px;height:100px;padding-top:50px;margin-left:20px;">
+			+
+		</div>
+		<div id="data" style="float:left;margin-left:30px;color:#ccc;width:280px;height:100px;">
+			<div style="margin-top:40px;margin-left:5px;">drag & drop your txt file into this block</div>
+		</div>
+		<div style="float:left;color:#ccc;font-size:50px;height:100px;padding-top:50px;margin-left:20px;">
+			=
+		</div>
+		<div style="float:left;color:#ccc;font-size:50px;height:100px;padding-top:50px;margin-left:20px;">
+			Your chart
+		</div>
+	</div>
+</body>
+</html>
+
