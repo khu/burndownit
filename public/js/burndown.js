@@ -62,8 +62,10 @@ jQuery(document).ready(function() {
 			data = event.target.result;
 			eval(data)
 			var accumulated_finished = accumulate(finished);
-			var predict = accumulate(predict_velocity(finished, iterations.length))
-			burndown(planed, finished, scope, accumulated_finished, predict, iterations, title)
+			var accumulated_signoff = accumulate(signoff);
+			var predict_devecomplete = accumulate(predict_velocity(finished, iterations.length))
+			var predict_signoff = accumulate(predict_velocity(signoff, iterations.length))
+			burndown(planed, finished, signoff, scope, accumulated_finished, predict_devecomplete, predict_signoff,accumulated_signoff,iterations, title)
 	  };
 	  reader.readAsText(file);
 	  return false;
@@ -72,7 +74,7 @@ jQuery(document).ready(function() {
 
 });
 
-function burndown(planed, finished, scope, accumulated_finished, predict, iterations, title) {
+function burndown(planed, finished, signoff, scope, accumulated_finished, predict_devecomplete, predict_signoff, accumulated_signoff, iterations, title) {
 	new Highcharts.Chart({
 		chart: {
 			renderTo: 'container'
@@ -123,27 +125,43 @@ function burndown(planed, finished, scope, accumulated_finished, predict, iterat
 			data: planed
 		}, {
 			type: 'column',
-			name: 'Finished',
+			name: 'Dev Finished',
 			color:'#00B2EE',
 			data: finished,
+		}, {
+			type: 'column',
+			name: 'Signoff Finished',
+			color:'Brown',
+			data: signoff,
 		}, {
 			type: 'line',
 			name: 'Scope',
 			color:'#FF8C00',
 			data: scope
 		}, {
-				type: 'line',
-				name: 'Prediction',
-				dashStyle: 'longdash',
-				color: '#AAAAAA',
-				data: predict
-			},
-		{
 			type: 'line',
-			color: 'black',
-			name: 'Finished',
+			name: 'Dev complete prediction',
+			dashStyle: 'longdash',
+			color: '#AAAAAA',
+			data: predict_devecomplete
+		}, {
+			type: 'line',
+			color: '#00B2EE',
+			name: 'Dev complete',
 			data: accumulated_finished
-		}]
+		}, {
+			type: 'line',
+			name: 'Signoff Prediction',
+			dashStyle: 'longdash',
+			color: '#AAAAAA',
+			data: predict_signoff
+		}, {
+			type: 'line',
+			color: 'brown',
+			name: 'Signoff',
+			data: accumulated_signoff
+		}
+		]
 	});
 }
 
